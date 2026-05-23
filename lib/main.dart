@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:primerproyecto/principal.dart';
+import 'package:primerproyecto/actividad1.dart';
 
 void main() {
-  runApp(const Principal());
+  // runApp(const Principal());
+  runApp(const Actividad1());
 }
 
 /* 
