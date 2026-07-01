@@ -57,7 +57,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
       await storage.saveRefreshToken(response['refreshToken'] as String);
 
       final payload = JwtDecoder.decodePayload(accessToken);
-      final numDoc = payload['numDoc'] as String? ?? _documentoController.text.trim();
+      final numDoc =
+          payload['numDoc'] as String? ?? _documentoController.text.trim();
       await storage.saveDocumento(numDoc);
 
       if (!mounted) return;
@@ -112,8 +113,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 isLoading: _isLoading,
                 passwordVisible: _passwordVisible,
                 errorMessage: _errorMessage,
-                onPasswordToggle: () => setState(
-                    () => _passwordVisible = !_passwordVisible),
+                onPasswordToggle: () =>
+                    setState(() => _passwordVisible = !_passwordVisible),
                 onLogin: _handleLogin,
               ),
               const SizedBox(height: 24),
@@ -256,8 +257,9 @@ class _LoginCard extends StatelessWidget {
                 ),
               ),
               validator: (v) {
-                if (v == null || v.isEmpty) return 'La contraseña es obligatoria';
-                if (v.length < 6) return 'Mínimo 6 caracteres';
+                if (v == null || v.isEmpty)
+                  return 'La contraseña es obligatoria';
+                if (v.length < 4) return 'Mínimo 4 caracteres';
                 return null;
               },
             ),
@@ -278,8 +280,8 @@ class _LoginCard extends StatelessWidget {
                     Expanded(
                       child: Text(
                         errorMessage!,
-                        style:
-                            const TextStyle(color: Colors.redAccent, fontSize: 13),
+                        style: const TextStyle(
+                            color: Colors.redAccent, fontSize: 13),
                       ),
                     ),
                   ],
@@ -381,8 +383,7 @@ class _AppTextField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: const TextStyle(color: Color(0xFF2E4A62), fontSize: 14),
-        prefixIcon:
-            Icon(prefixIcon, color: const Color(0xFF3A5A78), size: 18),
+        prefixIcon: Icon(prefixIcon, color: const Color(0xFF3A5A78), size: 18),
         suffixIcon: suffixIcon,
         filled: true,
         fillColor: const Color(0xFF0D1923),
@@ -397,12 +398,12 @@ class _AppTextField extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide:
-              const BorderSide(color: Color(0xFF3B9EFF), width: 1.5),
+          borderSide: const BorderSide(color: Color(0xFF3B9EFF), width: 1.5),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Colors.redAccent.withValues(alpha: 0.7)),
+          borderSide:
+              BorderSide(color: Colors.redAccent.withValues(alpha: 0.7)),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),

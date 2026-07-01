@@ -23,4 +23,13 @@ class AuthRepository {
     );
     return response.data as Map<String, dynamic>;
   }
+
+  Future<void> logout(String refreshToken) async {
+    await _apiClient.post(
+      '/auth/logout',
+      data: {
+        'refreshToken': refreshToken,
+      },
+    );
+  }
 }
